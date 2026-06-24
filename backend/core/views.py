@@ -4,7 +4,7 @@ from rest_framework.views import APIView,Response
 from .models import User,UserStats,Transaction
 from .serializers import UserSerializer,UserStatsSerializer,TransactionSerializer
 from rest_framework import status
-from django.db.models import F
+from rest_framework.throttling import ScopedRateThrottle
 from django.db import transaction
 
 class UserListCreateAPIView(ListCreateAPIView):
@@ -16,6 +16,9 @@ class UserListCreateAPIView(ListCreateAPIView):
 class TransactionCreateAPIView(CreateAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
+
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "transaction_scope"    
     
     def perform_create(self, serializer):
         
@@ -38,10 +41,12 @@ class TransactionCreateAPIView(CreateAPIView):
             stats.save()
 
 
-# THROTTLING TO PREVENT ABUSE
 
 class UserSummaryAPIView(APIView):
-  
+    
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "general_scope"
+    
     def get(self, request, user_id):
         try:
             stats = UserStats.objects.get(user__id= user_id)
@@ -58,6 +63,8 @@ class UserSummaryAPIView(APIView):
 class RankUsersListAPIView(ListAPIView):
     queryset = UserStats.objects.order_by("-score")
     serializer_class = UserStatsSerializer
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "general_scope"    
 
 
 

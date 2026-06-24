@@ -125,9 +125,10 @@ STATIC_URL = 'static/'
 
 REST_FRAMEWORK = {
     "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
+        "rest_framework.throttling.ScopedRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "20/min",
+        "transaction_scope": "5/min",
+        "general_scope": "60/min",
     },
 }
