@@ -264,7 +264,7 @@ Additional safeguards include:
 ### Backend
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Mokshy46/transaction-tracker.git
 
 cd backend
 
