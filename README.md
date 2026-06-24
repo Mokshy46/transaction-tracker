@@ -11,7 +11,7 @@ A full-stack transaction tracking application built with Django REST Framework a
 [https://your-render-url.onrender.com
 ](https://transaction-tracker-bpiw.onrender.com/)
 ### Demo Video
-https://your-demo-video-link
+[https://your-demo-video-link](https://www.loom.com/share/945e8ca2d6ec46e6bd34e943ac8e7c04)
 
 
 ## Features
@@ -150,6 +150,17 @@ Users are ranked in descending order based on their score.
   }
 ]
 ```
+
+---
+
+### Rate Limiting
+
+DRF ScopedRateThrottle is used to prevent abuse.
+
+- Transaction Creation: 5 requests/minute
+- Read-only Endpoints (Summary & Ranking): 60 requests/minute
+
+This helps reduce automated manipulation of the ranking system while maintaining a smooth user experience.
 
 ---
 
