@@ -5,11 +5,11 @@ A full-stack transaction tracking application built with Django REST Framework a
 ## Live Demo
 
 ### Frontend
-(https://transaction-tracker-three.vercel.app/)
+https://transaction-tracker-three.vercel.app/
 ### Backend API
-(https://transaction-tracker-bpiw.onrender.com/)
+https://transaction-tracker-bpiw.onrender.com/
 ### Demo Video
-(https://www.loom.com/share/945e8ca2d6ec46e6bd34e943ac8e7c04)
+https://www.loom.com/share/945e8ca2d6ec46e6bd34e943ac8e7c04
 
 
 ## Features
